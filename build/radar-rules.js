@@ -3652,6 +3652,22 @@
         source:[ "/12753/list.htm",
           "/" ],
         target:"/ecust/yjs" } ] },
+  "eet-china.com":{ _name:"电子工程专辑",
+    ".":[ { title:"芯语",
+        docs:"https://docs.rsshub.app/new-media.html#dian-zi-gong-cheng-zhuan-ji-xin-yu",
+        source:[ "/mp",
+          "/" ],
+        target:(params, url) => {
+                    url = new URL(url);
+                    const path = url.href.match(/\.com\/mp(.*?)/)[1];
+
+                    return `/eet-china/mp${path ? `/${path}` : ''}`;
+                } },
+      { title:"芯语 - 标签",
+        docs:"https://docs.rsshub.app/new-media.html#dian-zi-gong-cheng-zhuan-ji-xin-yu-biao-qian",
+        source:[ "/mp/tags/:id",
+          "/" ],
+        target:"/eet-china/mp/tags/:id" } ] },
   "elasticsearch.cn":{ _name:"Elastic 中文社区",
     ".":[ { title:"发现",
         docs:"https://docs.rsshub.app/bbs.html#elastic-zhong-wen-she-qu-fa-xian",
@@ -13299,6 +13315,15 @@
         docs:"https://docs.rsshub.app/university.html#xi-an-dian-zi-ke-ji-da-xue",
         source:[ "/:category" ],
         target:(params) => `/xidian/jwc${params.category ? `/${params.category}` : ''}` } ] },
+  "ximalaya.com":{ _name:"喜马拉雅",
+    ".":[ { title:"专辑",
+        docs:"https://docs.rsshub.app/multimedia.html#xi-ma-la-ya",
+        source:"/:type/:id",
+        target:(params) => {
+                    if (parseInt(params.id) + '' === params.id) {
+                        return '/ximalaya/:type/:id';
+                    }
+                } } ] },
   "xjtu.edu.cn":{ _name:"西安交通大学",
     "2yuan":[ { title:"第二附属医院新闻",
         docs:"https://docs.rsshub.app/university.html#xi-an-jiao-tong-da-xue-di-er-fu-shu-yi-yuan-xin-wen",
@@ -14103,15 +14128,6 @@
         target:(params, url) => {
                     const matches = new URL(url).href.match(/type=(\w+)/);
                     return `/zyw/hot${matches ? `/${matches[1]}` : ''}`;
-                } } ] },
-  "ximalaya.com":{ _name:"喜马拉雅",
-    ".":[ { title:"专辑",
-        docs:"https://docs.rsshub.app/multimedia.html#xi-ma-la-ya",
-        source:"/:type/:id",
-        target:(params) => {
-                    if (parseInt(params.id) + '' === params.id) {
-                        return '/ximalaya/:type/:id/';
-                    }
                 } } ] },
   "algocasts.io":{ _name:"AlgoCasts",
     ".":[ { title:"视频更新",
