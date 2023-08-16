@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/scrape.yml'
-      - 'docs/**'
+      - '.github/workflows/docs-search-index.yml'
+      - 'website/**'
   workflow_dispatch: ~
   schedule:
   - cron: '44 1 * * 1'
